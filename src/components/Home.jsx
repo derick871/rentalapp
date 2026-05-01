@@ -13,7 +13,7 @@ const Houses=[
 ];
 
 function About() {
-  const [books, setBooks] = useState(initialBooks);
+  const [Houses, setHouses] = useState(initialhouses);
   const [formData, setFormData] = useState({ title: '', price: '' });
   const [isEditing, setIsEditing] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -24,14 +24,28 @@ function About() {
     if (!formData.title || !formData.price) return;
 
     if (isEditing) {
-      setBooks(books.map(b => b.id === isEditing ? { ...b, ...formData } : b));
+      sethouses(houses.map(b => b.id === isEditing ? { ...b, ...formData } : b));
       setIsEditing(null);
     } else {
-      setBooks([...books, { id: Date.now(), ...formData }]);
+      sethouses([...houses, { id: Date.now(), ...formData }]);
     }
     setFormData({ title: '', price: '' });
   };
 
+   const startEdit = (house) => {
+    setIsEditing(house.id);
+    setFormData({ title: house.title, price: house.price });
+  };
+
+  const openDeleteModal = (id) => {
+    setHouseToDelete(id);
+    setShowModal(true);
+  };
+
+ const deleteBook = () => {
+    setBooks(books.filter(book => book.id !== bookToDelete));
+    setShowModal(false);
+  };
 
 function home() {
 
