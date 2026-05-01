@@ -32,7 +32,7 @@ function House() {
     } else {
       setHouses([...houses, { id: Date.now(), ...formData, image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=500" }]);
     }
-    setFormData({ name: '', location: '', standard: '', price: '' });
+    setFormData ({ name: '', location: '', standard: '', price: '' });
   };
 
   const startEdit = (house) => {
