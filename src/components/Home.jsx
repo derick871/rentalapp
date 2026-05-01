@@ -19,6 +19,19 @@ function About() {
   const [showModal, setShowModal] = useState(false);
   const [bookToDelete, setBookToDelete] = useState(null);
 
+    const handleSave = (e) => {
+    e.preventDefault();
+    if (!formData.title || !formData.price) return;
+
+    if (isEditing) {
+      setBooks(books.map(b => b.id === isEditing ? { ...b, ...formData } : b));
+      setIsEditing(null);
+    } else {
+      setBooks([...books, { id: Date.now(), ...formData }]);
+    }
+    setFormData({ title: '', price: '' });
+  };
+
 
 function home() {
 
