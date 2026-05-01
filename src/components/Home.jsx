@@ -12,16 +12,16 @@ const Houses=[
   { "id": 9, "name": "Elgon Villa", "location": "Nairobi", "standard": "3 BR", "price": 80000, "image": "images/pexels-julian-largo-622163228-32163467.jpg" },
 ];
 
-function About() {
+function House() {
   const [Houses, setHouses] = useState(initialhouses);
-  const [formData, setFormData] = useState({ title: '', price: '' });
+  const [formData, setFormData] = useState({ id: '',name: '',location: ''standard: '' price: '' });
   const [isEditing, setIsEditing] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [bookToDelete, setBookToDelete] = useState(null);
 
     const handleSave = (e) => {
     e.preventDefault();
-    if (!formData.title || !formData.price) return;
+    if (!formData.name || !formData.price, !formData.location || !formData.standard) return;
 
     if (isEditing) {
       sethouses(houses.map(b => b.id === isEditing ? { ...b, ...formData } : b));
@@ -29,12 +29,12 @@ function About() {
     } else {
       sethouses([...houses, { id: Date.now(), ...formData }]);
     }
-    setFormData({ title: '', price: '' });
+    setFormData({ name: '', price: '' });
   };
 
    const startEdit = (house) => {
     setIsEditing(house.id);
-    setFormData({ title: house.title, price: house.price });
+    setFormData({ name: house.name, price: house.price });
   };
 
   const openDeleteModal = (id) => {
@@ -42,13 +42,10 @@ function About() {
     setShowModal(true);
   };
 
- const deleteBook = () => {
-    setBooks(books.filter(book => book.id !== bookToDelete));
+ const deleteHouse = () => {
+    setHouses(house.filter(house => house.id !== houseToDelete));
     setShowModal(false);
   };
-
-function home() {
-
   return (
     <div>
         <h1>Welcome to SpotHouse</h1>
@@ -58,6 +55,50 @@ function home() {
              and share your favorite spots with friends and fellow spot enthusiasts. Join our
               community today and start discovering the best places around you!
         </p>
+        <div className="max-w-5xl mx-auto">
+        <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">My Library</h2>
+
+        {/* --- Input Form --- */}
+        <form onSubmit={handleSave} className="bg-white p-6 rounded-lg shadow-md mb-10 flex flex-wrap gap-4 items-end justify-center">
+          <div className="flex flex-col">
+            <label className="text-sm font-semibold text-gray-600 mb-1">Book Title</label>
+            <input 
+              className="border border-gray-300 p-2 rounded focus:ring-2 focus:ring-blue-500 outline-none"
+              placeholder="e.g. The Hobbit"
+              value={formData.title} 
+              onChange={(e) => setFormData({...formData, title: e.target.value})} 
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className="text-sm font-semibold text-gray-600 mb-1">Price ($)</label>
+            <input 
+              className="border border-gray-300 p-2 rounded focus:ring-2 focus:ring-blue-500 outline-none"
+              type="number"
+              placeholder="0.00"
+              value={formData.price} 
+              onChange={(e) => setFormData({...formData, price: e.target.value})} 
+            />
+          </div>
+          <button type="submit" className={`px-6 py-2 rounded font-bold text-white transition-colors ${isEditing ? 'bg-orange-500 hover:bg-orange-600' : 'bg-green-600 hover:bg-green-700'}`}>
+            {isEditing ? "Update" : "Add Book"}
+          </button>
+        </form>
+
+        {/* --- Card Grid --- */}
+        <div className="grid bg-slate-500 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {books.map(book => (
+            <div key={book.id} className="bg-white p-5 rounded-xl shadow hover:shadow-lg transition-shadow border border-gray-200">
+              <h3 className="text-xl font-semibold text-gray-800">{book.title}</h3>
+              <p className="text-gray-500 mt-2 font-medium text-lg">ksh{book.price}</p>
+              <div className="mt-4 flex gap-3 border-t pt-4">
+                <button onClick={() => startEdit(book)} className="text-orange-500 hover:text-orange-700 font-semibold flex-1">Edit</button>
+                <button onClick={() => openDeleteModal(book.id)} className="text-red-500 hover:text-red-700 font-semibold flex-1">Delete</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
     </div>
   )
 }
