@@ -89,9 +89,9 @@ function Register() {
 
           {/* Reset Actions */}
           <section className="grid grid-cols-3 gap-2 pt-4">
-            <button onClick={() => resetField('name')} className="text-[10px] uppercase font-bold py-2 bg-slate-100 text-slate-600 rounded hover:bg-red-50 hover:text-red-600 transition-all">Clear Name</button>
-            <button onClick={() => resetField('email')} className="text-[10px] uppercase font-bold py-2 bg-slate-100 text-slate-600 rounded hover:bg-red-50 hover:text-red-600 transition-all">Clear Email</button>
-            <button onClick={() => resetField('password')} className="text-[10px] uppercase font-bold py-2 bg-slate-100 text-slate-600 rounded hover:bg-red-50 hover:text-red-600 transition-all">Clear Pass</button>
+            <button onClick={() => resetField('name')} className="text-[10px] uppercase font-bold py-2 bg-slate-700 text-white rounded hover:bg-red-50 hover:text-red-600 transition-all">Clear Name</button>
+            <button onClick={() => resetField('email')} className="text-[10px] uppercase font-bold py-2 bg-slate-700 text-white rounded hover:bg-red-50 hover:text-red-600 transition-all">Clear Email</button>
+            <button onClick={() => resetField('password')} className="text-[10px] uppercase font-bold py-2 bg-slate-700 text-white rounded hover:bg-red-50 hover:text-red-600 transition-all">Clear Pass</button>
           </section>
         </div>
       </div>

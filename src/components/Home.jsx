@@ -82,7 +82,7 @@ function House() {
             <label className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Price (Ksh)</label>
             <input className="bg-slate-50 border-none ring-1 ring-slate-200 p-2.5 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" type="number" value={formData.price} onChange={(e) => setFormData({...formData, price: e.target.value})} placeholder="Amount" />
           </div>
-          <button type="submit" className={`w-full py-3 rounded-lg font-bold text-white shadow-lg transition-all active:scale-95 ${isEditing ? 'bg-amber-500 hover:bg-amber-600 shadow-amber-200' : 'bg-blue-600 hover:bg-blue-700 shadow-blue-200'}`}>
+          <button type="submit" className= {`w-full py-3 rounded-lg font-bold text-white shadow-lg transition-all active:scale-95 ${isEditing ? 'bg-amber-500 hover:bg-amber-600 shadow-amber-200' : 'bg-slate-600 hover:bg-amber-600 shadow-blue-200'}`}>
             {isEditing ? "Update Listing" : "Create Listing"}
           </button>
         </form>
@@ -112,8 +112,8 @@ function House() {
                 </div>
               </div>
               <div className="px-6 pb-6 pt-2 flex gap-3">
-                <button onClick={() => startEdit(house)} className="flex-1 py-2.5 bg-slate-100 text-slate-600 rounded-xl font-bold hover:bg-amber-100 hover:text-amber-600 transition-all">Edit</button>
-                <button onClick={() => openDeleteModal(house.id)} className="flex-1 py-2.5 bg-slate-100 text-slate-600 rounded-xl font-bold hover:bg-red-100 hover:text-red-600 transition-all">Delete</button>
+                <button onClick={() => startEdit(house)} className="flex-1 py-2.5 bg-slate-600 text-white rounded-xl font-bold hover:bg-amber-100 hover:text-amber-600 transition-all">Edit</button>
+                <button onClick={() => openDeleteModal(house.id)} className="flex-1 py-2.5 bg-slate-600 text-white rounded-xl font-bold hover:bg-red-100 hover:text-red-600 transition-all">Delete</button>
               </div>
             </div>
           ))}

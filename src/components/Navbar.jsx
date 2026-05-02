@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom"
-function Navbar({isLoggedIn}){
+function Navbar(){
     return(
         <>
-        <nav className =" bg-slate-500 font-bold p-4 text-white justify-evenly">
+        <nav className =" bg-slate-500 font-bold p-4 text-center text-white justify-evenly">
             <ul className="flex gap-10 hover:amber-500">
+              <div className="w-10 h-10 bg-amber-600 rounded-xl flex items-center justify-center text-white font-bold">SH</div>
 
                 
                 <li>
@@ -22,7 +23,6 @@ function Navbar({isLoggedIn}){
                 <li>
                   <Link to="/register">Register</Link>
                 </li>
-                <button className="bg-slate-700 rounded p-2">{isLoggedIn ? "LogOut" : "LogIn"}</button>
             </ul>
             
             

@@ -7,7 +7,7 @@ function Dashboard() {
   const houses = [
     { id: 201, name: "Luxury-Plaza", price: 100000 },
     { id: 202, name: "White House", price: 20000 },
-    { id: 203, name: "Modern-View", price: 1500 },
+    { id: 203, name: "Modern-View", price: 15000 },
   ];
 
   // Calculate total revenue from the houses array
@@ -20,8 +20,8 @@ function Dashboard() {
         {/* Navigation Bar */}
         <nav className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex flex-wrap justify-between items-center mb-8 gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold">H</div>
-            <h1 className="text-xl font-bold text-slate-800 tracking-tight">Housely <span className="text-indigo-600">Dash</span></h1>
+            <div className="w-10 h-10 bg-slate-600 rounded-xl flex items-center justify-center text-white font-bold">SH</div>
+            <h1 className="text-xl font-bold text-slate-800 tracking-tight">Spot<span className="text-amber-600">House</span></h1>
           </div>
 
           <div className="flex items-center gap-4">
@@ -39,7 +39,7 @@ function Dashboard() {
               className={`px-6 py-2 rounded-lg font-semibold text-sm transition-all shadow-sm ${
                 isLoggedIn 
                 ? "bg-rose-50 text-rose-600 hover:bg-rose-100" 
-                : "bg-indigo-600 text-white hover:bg-indigo-700"
+                : "bg-slate-600 text-white hover:bg-amber-500"
               }`}
             >
               {isLoggedIn ? "Logout" : "Login"}
@@ -54,7 +54,7 @@ function Dashboard() {
             <p className="text-slate-500 mb-6">Please log in to manage your properties and view insights.</p>
             <button 
               onClick={() => setIsLoggedIn(true)}
-              className="bg-slate-800 text-white px-8 py-3 rounded-xl hover:scale-105 transition-transform"
+              className="bg-slate-800 text-white px-8 py-3 rounded-xl hover:bg-amber-600 hover:scale-105 transition-transform"
             >
               Access Dashboard
             </button>
@@ -64,9 +64,9 @@ function Dashboard() {
             {/* Header Message */}
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-slate-800">
-                {role === "admin" ? "Admin Control Center" : "Customer Overview"}
+                {role === "admin" ? "Admin Manage Properties" : "Tenants Overview"}
               </h2>
-              <p className="text-slate-500">Welcome, here is what's happening today.</p>
+              <p className="text-slate-500">Welcome to SportHouse to explore houses.</p>
             </div>
 
             {/* Stats Grid */}
@@ -85,7 +85,7 @@ function Dashboard() {
 
               <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
                 <p className="text-slate-400 text-xs uppercase tracking-wider font-bold mb-1">Active Tenants</p>
-                <h2 className="text-3xl font-black text-indigo-600">12</h2>
+                <h2 className="text-3xl font-black text-indigo-600">3</h2>
               </div>
             </div>
 
