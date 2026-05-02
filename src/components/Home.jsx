@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 
 const initialHouses = [
   { id: 1, name: "Luxury Villa", location: "Kisumu", standard: "4 BR + Pool", price: 90000, image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=500" },
