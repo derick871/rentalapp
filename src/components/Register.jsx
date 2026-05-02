@@ -1,43 +1,102 @@
-import {useState } from 'react'
+import { useState } from 'react';
 
 function Register() {
-    const [name,  setName] =  useState("Derick Demarco");
-    const [email, setEmail] =  useState("");
-    const [password,  setPassword] =  useState("");
-    const [age, setAge] =  useState(23);
-    
+  const [formData, setFormData] = useState({
+    name: "Derick Demarco",
+    email: "derrick@gmail.com",
+    password: "",
+    age: 23
+  });
+
+  // Helper to update state dynamically
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const updateAge = (amount) => {
+    setFormData(prev => ({ ...prev, age: prev.age + amount }));
+  };
+
+  const resetField = (field) => {
+    setFormData(prev => ({ ...prev, [field]: "" }));
+  };
+
   return (
-    <div className="text-center bg-slate-300 m-10 text-slate-700 flex flex-col gap-4 p-10 rounded-md">
-      <section className="bg-slate-100 p-6 rounded-md m-10"> 
-       <h2>Name: {name} </h2>
-       <h2>Email: {email} </h2>
-       <h2>Password: {password} </h2>
-       <h2>Age: {age} </h2> 
-      </section>
-    <section className='flex gap-4'>
-       <button onClick={ ()=> setAge(age +1)} className="bg-slate-700 text-white p-2 rounded-md w-30">Increment</button> <br/>
-    <button onClick={ ()=> setAge(age -1)} className="bg-slate-700 text-white p-2 rounded-md w-30">Decrement</button>
-    </section>
-    <br/>
-    <section className="bg-slate-100 p-6 rounded-md m-10 flex flex-col gap-4">
-    <label htmlFor="name">Name:</label>
-    <input type="text" placeholder="name" onChange={(e)=> setName(e.target.value)} />
-    
-    <label htmlFor="email">Email:</label>
-    <input type="email" placeholder="email" onChange={(e)=> setEmail(e.target.value)} />
-    
-    <label htmlFor="password">Password:</label>
-    <input type="password" placeholder="password" onChange={(e)=> setPassword(e.target.value)} />
-        <section className='flex gap-4'>
-          <button onClick={ ()=> setName("")} className="bg-slate-700 text-white p-2 rounded-md w-30" >Reset Name</button>
-          <button onClick={ ()=> setEmail("")} className="bg-slate-700 text-white p-2 rounded-md w-30" >Reset Email</button>
-          <button onClick={ ()=> setPassword("")} className="bg-slate-700 text-white p-2 rounded-md w-30" >Reset Password</button>
-        </section>
+    <div className="min-h-screen bg-slate-200 flex items-center justify-center p-6">
+      <div className="max-w-md w-full bg-white shadow-xl rounded-2xl overflow-hidden border border-slate-300">
+        
+        {/* Profile Preview Header */}
+        <header className="bg-slate-800 p-6 text-white text-center">
+          <h1 className="text-2xl font-bold">{formData.name || "New User"}</h1>
+          <p className="text-slate-400 text-sm">{formData.email || "No email provided"}</p>
+          <div className="mt-4 flex justify-center items-center gap-6">
+            <div className="text-center">
+              <span className="block text-xs uppercase tracking-widest text-slate-400">Age</span>
+              <span className="text-xl font-semibold">{formData.age}</span>
+            </div>
+          </div>
+        </header>
 
-    </section>
+        <div className="p-8 space-y-6">
+          {/* Age Controls */}
+          <section className="flex justify-between items-center bg-slate-50 p-4 rounded-lg border border-slate-100">
+            <span className="font-medium text-slate-600">Adjust Age</span>
+            <div className="flex gap-2">
+              <button onClick={() => updateAge(-1)} className="px-4 py-1 bg-white border border-slate-300 rounded-md hover:bg-slate-100 transition-colors shadow-sm">-</button>
+              <button onClick={() => updateAge(1)} className="px-4 py-1 bg-slate-800 text-white rounded-md hover:bg-slate-700 transition-colors shadow-sm">+</button>
+            </div>
+          </section>
 
+          {/* Form Inputs */}
+          <section className="space-y-4">
+            <div className="flex flex-col gap-1">
+              <label className="text-xs font-bold text-slate-500 uppercase ml-1">Full Name</label>
+              <input 
+                name="name"
+                type="text" 
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-slate-800 outline-none transition-all"
+                placeholder="Enter name"
+              />
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <label className="text-xs font-bold text-slate-500 uppercase ml-1">Email Address</label>
+              <input 
+                name="email"
+                type="email" 
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-slate-800 outline-none transition-all"
+                placeholder="example@mail.com"
+              />
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <label className="text-xs font-bold text-slate-500 uppercase ml-1">Password</label>
+              <input 
+                name="password"
+                type="password" 
+                value={formData.password}
+                onChange={handleChange}
+                className="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-slate-800 outline-none transition-all"
+                placeholder="••••••••"
+              />
+            </div>
+          </section>
+
+          {/* Reset Actions */}
+          <section className="grid grid-cols-3 gap-2 pt-4">
+            <button onClick={() => resetField('name')} className="text-[10px] uppercase font-bold py-2 bg-slate-100 text-slate-600 rounded hover:bg-red-50 hover:text-red-600 transition-all">Clear Name</button>
+            <button onClick={() => resetField('email')} className="text-[10px] uppercase font-bold py-2 bg-slate-100 text-slate-600 rounded hover:bg-red-50 hover:text-red-600 transition-all">Clear Email</button>
+            <button onClick={() => resetField('password')} className="text-[10px] uppercase font-bold py-2 bg-slate-100 text-slate-600 rounded hover:bg-red-50 hover:text-red-600 transition-all">Clear Pass</button>
+          </section>
+        </div>
+      </div>
     </div>
   );
 }
 
-export default Register
+export default Register;
