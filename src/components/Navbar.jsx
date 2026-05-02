@@ -4,7 +4,7 @@ function Navbar(){
         <>
         <nav className =" bg-slate-500 font-bold p-4 text-center text-white justify-evenly">
             <ul className="flex gap-10 hover:amber-500">
-              <div className="w-10 h-10 bg-amber-600 rounded-xl flex items-center justify-center text-white font-bold">SH</div>
+              <div className="w-10 h-10 bg-slate-600 rounded-xl flex items-center justify-center text-white font-bold">SH</div>
 
                 
                 <li>
