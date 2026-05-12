@@ -4,6 +4,8 @@ import Home from './components/Home';
 import About from './components/About';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
+import Accounts from './components/Accounts';
+import Settings from './components/Settings';
 import './App.css'
 
 function App() {
@@ -15,7 +17,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />  
+        <Route path="/dashboard" element={<Dashboard />}> 
+        <Route path="accounts" element={<Accounts />} />
+        <Route path="settings" element={<Settings />} />
+        </Route> 
       </Routes>
     </Router>
     

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 function Register() {
+  // Initialize state as an object to manage multiple related fields in one place
   const [formData, setFormData] = useState({
     name: "Derick Demarco",
     email: "derrick@gmail.com",
@@ -8,16 +9,19 @@ function Register() {
     age: 23
   });
 
-  // Helper to update state dynamically
+  // Dynamic handler: uses the input's 'name' attribute to update the matching state key
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // Spread operator (...prev) ensures we don't lose the other fields when updating one
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  // Functional update: uses the previous state to safely increment/decrement age
   const updateAge = (amount) => {
     setFormData(prev => ({ ...prev, age: prev.age + amount }));
   };
 
+  // Specific field reset: uses bracket notation to target a dynamic key
   const resetField = (field) => {
     setFormData(prev => ({ ...prev, [field]: "" }));
   };
@@ -26,7 +30,7 @@ function Register() {
     <div className="min-h-screen bg-slate-200 flex items-center justify-center p-6">
       <div className="max-w-md w-full bg-white shadow-xl rounded-2xl overflow-hidden border border-slate-300">
         
-        {/* Profile Preview Header */}
+        {/* Profile Preview Header - UI reflects state in real-time */}
         <header className="bg-slate-800 p-6 text-white text-center">
           <h1 className="text-2xl font-bold">{formData.name || "New User"}</h1>
           <p className="text-slate-400 text-sm">{formData.email || "No email provided"}</p>
@@ -48,12 +52,12 @@ function Register() {
             </div>
           </section>
 
-          {/* Form Inputs */}
+          {/* Form Inputs - "Controlled Components" because their value is driven by React state */}
           <section className="space-y-4">
             <div className="flex flex-col gap-1">
               <label className="text-xs font-bold text-slate-500 uppercase ml-1">Full Name</label>
               <input 
-                name="name"
+                name="name" // Must match the key in formData
                 type="text" 
                 value={formData.name}
                 onChange={handleChange}
@@ -82,7 +86,7 @@ function Register() {
                 value={formData.password}
                 onChange={handleChange}
                 className="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-slate-800 outline-none transition-all"
-                placeholder="••••••••"
+                placeholder="......"
               />
             </div>
           </section>
