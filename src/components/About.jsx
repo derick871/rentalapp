@@ -55,7 +55,7 @@ const About = () => {
 
         {/* --- Call to Action --- */}
         <div className="flex justify-center pt-6">
-          <Link to="/contact">
+          <Link to="/dashboard">
             <button className="bg-slate-700 hover:bg-amber-500 text-white px-10 py-4 rounded-md font-bold transition-all active:scale-95 shadow-lg">
               Get started
             </button>

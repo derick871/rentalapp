@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function House() {
-  // --- DATA & STATE MANAGEMENT ---
   
-  // 1. Moved the array inside the component
+  
+  // Moved the array inside the component
   const initialHouses = [
     { id: 1, name: "Luxury Villa", location: "Kisumu", standard: "4 BR + Pool", price: 90000, image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=500" },
     { id: 2, name: "Modern Apartment", location: "Nairobi", standard: "4 BR + Pool", price: 100000, image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=500" },
@@ -15,14 +16,13 @@ function House() {
     { id: 8, name: "Baraka 040", location: "Kakamega", standard: "3 BR", price: 90000, image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=500" },
     { id: 9, name: "Elgon Villa", location: "Nairobi", standard: "3 BR", price: 80000, image: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=500" },
   ];
-
+    // --- DATA & STATE MANAGEMENT ---
   const [houses, setHouses] = useState(initialHouses); 
   const [formData, setFormData] = useState({ name: '', location: '', standard: '', price: '' });
   const [isEditing, setIsEditing] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [houseToDelete, setHouseToDelete] = useState(null);
 
-  // --- LOGIC HANDLERS ---
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -143,13 +143,19 @@ function House() {
               </div>
             </div>
           ))}
+
         </div>
+        <button>
+          <Link to="/about" className="mt-12 inline-block bg-slate-700 hover:bg-amber-500 text-white px-10 py-4 rounded-md font-bold transition-all active:scale-95 shadow-lg">
+            Learn More
+          </Link>
+        </button>
 
         {/* DELETE MODAL */}
         {showModal && (
           <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
             <div className="bg-white p-8 rounded-3xl max-w-sm w-full text-center shadow-2xl border border-slate-100 animate-in fade-in zoom-in duration-200">
-              <div className="w-16 h-16 bg-red-50 text-red-500 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">⚠️</div>
+              <div className="w-16 h-16 bg-red-50 text-red-500 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl"></div>
               <h3 className="text-2xl font-bold text-slate-900 mb-2">Remove Listing?</h3>
               <p className="text-slate-500 mb-8">This will permanently remove the property from your dashboard.</p>
               <div className="flex gap-4">
