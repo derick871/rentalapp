@@ -12,7 +12,6 @@ function House() {
     { id: 4, name: "Modern Apartment", location: "Nairobi", standard: "3 BR", price: 50000, image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=80&w=500" },
     { id: 5, name: "Modern Apartment", location: "Nakuru", standard: "4 BR", price: 120000, image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=500" },
     { id: 6, name: "Spring Park", location: "Nairobi", standard: "3 BR", price: 150000, image: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=500" },
-    { id: 7, name: "Kasablanka", location: "Nairobi", standard: "4 BR", price: 130000, image: "https://images.unsplash.com/photo-1513584684031-43d1a4271c3f?q=80&w=500" },
     { id: 8, name: "Baraka 040", location: "Kakamega", standard: "3 BR", price: 90000, image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=500" },
     { id: 9, name: "Elgon Villa", location: "Nairobi", standard: "3 BR", price: 80000, image: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=500" },
   ];
